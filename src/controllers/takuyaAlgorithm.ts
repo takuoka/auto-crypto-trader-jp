@@ -200,13 +200,13 @@ export class TakuyaAlgorithm extends BaseTradeAlgorithm {
     const short = this.currentShortRSI;
     const mid = this.currentMediumRSI;
     const long = this.currentLongRSI;
-    if (short < 40 || mid < 45 || long < 30) {
+    if (short <= 40 || mid <= 45 || long <= 30) {
       return RSI_STATUS.isOnDownTrend;
     }
-    if (short > 55 && mid > 55) {
+    if (mid >= 53 && (short >= 45 || long >= 45)) {
       return RSI_STATUS.isOnUpTrend;
     }
-    if (mid > 50 && long > 50) {
+    if (mid >= 50 && long >= 48) {
       return RSI_STATUS.isOnUpTrend;
     }
     return RSI_STATUS.other;
